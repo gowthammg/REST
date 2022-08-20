@@ -1,0 +1,240 @@
+{
+	"id": "1bc94f64-2ffa-4c04-b32e-a9ef53ec4e20",
+	"name": "Rest Class 2",
+	"timestamp": "2022-08-20T06:42:05.688Z",
+	"collection_id": "0-a707829e-5bc8-4b9a-ac42-8ad71cd14240",
+	"folder_id": 0,
+	"environment_id": "e76884be-e332-44d1-84bc-22f048944b6b",
+	"totalPass": 12,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2f87bca2-b6c3-47e0-af30-da8290590e86",
+			"name": "Post Create Incident",
+			"url": "https://dev101565.service-now.com/api/now/table//incident",
+			"time": 676,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Checking the status Code is 201": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Checking the status Code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				676
+			],
+			"allTests": [
+				{
+					"Checking the status Code is 201": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "6ec7add2-d4d0-41f3-8c99-17d17b987a12",
+			"name": "GetRequest",
+			"url": "https://dev101565.service-now.com/api/now/table//incident/e547cb27971111103adafef3a253af11",
+			"time": 636,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Checking the status Code is 200": true
+			},
+			"testPassFailCounts": {
+				"Checking the status Code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				636
+			],
+			"allTests": [
+				{
+					"Checking the status Code is 200": true
+				}
+			]
+		},
+		{
+			"id": "304c90cd-ac47-4c49-8fbb-07c3787cf735",
+			"name": "UpdateShortDesc",
+			"url": "https://dev101565.service-now.com/api/now/table//incident/e547cb27971111103adafef3a253af11",
+			"time": 719,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Checking short_description alone is modified": true,
+				"Checking description is not modified": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checking short_description alone is modified": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checking description is not modified": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				719
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Checking short_description alone is modified": true,
+					"Checking description is not modified": true
+				}
+			]
+		},
+		{
+			"id": "fc6f132c-c36e-4439-8bb7-78cb269d01d4",
+			"name": "UpdateShortDesc Copy",
+			"url": "https://dev101565.service-now.com/api/now/table//incident/e547cb27971111103adafef3a253af11",
+			"time": 661,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Checking short_description alone is modified": true,
+				"Checking description is not modified": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checking short_description alone is modified": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Checking description is not modified": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				661
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Checking short_description alone is modified": true,
+					"Checking description is not modified": true
+				}
+			]
+		},
+		{
+			"id": "14c8e9c0-9f3c-4787-9247-38ece1b46495",
+			"name": "DeleteRequest",
+			"url": "https://dev101565.service-now.com/api/now/table//incident/e547cb27971111103adafef3a253af11",
+			"time": 414,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				414
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "a0f411bc-dfc1-4584-a752-2fb6475df795",
+			"name": "CheckingDeletedRecordIsnotpresent",
+			"url": "https://dev101565.service-now.com/api/now/table//incident/e547cb27971111103adafef3a253af11",
+			"time": 648,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Checking for No Record Found ": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Checking for No Record Found ": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				648
+			],
+			"allTests": [
+				{
+					"Checking for No Record Found ": true,
+					"Body matches string": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3754,
+	"collection": {
+		"requests": [
+			{
+				"id": "2f87bca2-b6c3-47e0-af30-da8290590e86",
+				"method": "POST"
+			},
+			{
+				"id": "6ec7add2-d4d0-41f3-8c99-17d17b987a12",
+				"method": "GET"
+			},
+			{
+				"id": "304c90cd-ac47-4c49-8fbb-07c3787cf735",
+				"method": "PUT"
+			},
+			{
+				"id": "fc6f132c-c36e-4439-8bb7-78cb269d01d4",
+				"method": "PATCH"
+			},
+			{
+				"id": "14c8e9c0-9f3c-4787-9247-38ece1b46495",
+				"method": "DELETE"
+			},
+			{
+				"id": "a0f411bc-dfc1-4584-a752-2fb6475df795",
+				"method": "GET"
+			}
+		]
+	}
+}

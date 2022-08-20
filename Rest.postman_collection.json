@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "a707829e-5bc8-4b9a-ac42-8ad71cd14240",
+		"name": "Rest Class 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Create Incident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checking the status Code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"number\");\r",
+							"});\r",
+							"\r",
+							"res = pm.response.json()\r",
+							"pm.globals.set(\"systemid\", res.result.sys_id);\r",
+							"\r",
+							"pm.environment.set(\"short_description\", res.result.short_description);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\":\"Invalid1\",\"description\":\"Zee boom baa\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checking the status Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident/{{systemid}}",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident",
+						"{{systemid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateShortDesc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking short_description alone is modified\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.short_description).to.eql(\"invalid2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking description is not modified\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.description).to.eql(\"Zee boom baa\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\": \"invalid2\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident/{{systemid}}",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident",
+						"{{systemid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateShortDesc Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking short_description alone is modified\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.short_description).to.eql(\"invalid2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking description is not modified\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.description).to.eql(\"Zee boom baa\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\": \"invalid2\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident/{{systemid}}",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident",
+						"{{systemid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident/{{systemid}}",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident",
+						"{{systemid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckingDeletedRecordIsnotpresent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checking for No Record Found \", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+							"});\r",
+							"\r",
+							"//pm.environment.unset(\"systemid\");\r",
+							"pm.globals.unset(\"systemid\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{HostName}}/{{apiPath}}/incident/{{systemid}}",
+					"protocol": "https",
+					"host": [
+						"{{HostName}}"
+					],
+					"path": [
+						"{{apiPath}}",
+						"incident",
+						"{{systemid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "hC-p6Zuu5%HL",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "sys_id",
+			"value": ""
+		}
+	]
+}
