@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "154f72f6-190d-4883-9a4e-cffc40f80dc9",
+		"name": "Jira",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateJira",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"resp = pm.response.json();\r",
+							"pm.environment.set(\"jiraId\", resp.key);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\" : {\r\n        \"project\" : \r\n        {\r\n            \"key\" : \"AUG\"\r\n        },\r\n        \"summary\" : \"This is summary\",\r\n        \"description\" : \"This is description\",\r\n        \"issuetype\" : {\r\n            \"name\" : \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{jiraHostName}}/rest/api/2/issue",
+					"protocol": "https",
+					"host": [
+						"{{jiraHostName}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJira",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{jiraHostName}}/rest/api/2/issue/{{jiraId}}",
+					"protocol": "https",
+					"host": [
+						"{{jiraHostName}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{jiraId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletejira",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    console.log(\"Checking the Status is not found\");\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{jiraHostName}}/rest/api/2/issue/{{jiraId}}",
+					"protocol": "https",
+					"host": [
+						"{{jiraHostName}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{jiraId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJiraAfterDelete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    console.log(\"Inside Get After Delete\");\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{jiraHostName}}/rest/api/2/issue/{{jiraId}}",
+					"protocol": "https",
+					"host": [
+						"{{jiraHostName}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{jiraId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "HnII5QAQ7QeqLPHBa5Wr9828",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "testleafjune2022@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jiraId",
+			"value": ""
+		}
+	]
+}
